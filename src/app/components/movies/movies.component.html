@@ -1,0 +1,54 @@
+<div class="app">
+    <h1>LuwyList Movies</h1>
+    <div class="search">
+
+        <!--1ra ENTER -->
+        <!-- <input type="text" #searchText name="#searchText" placeholder="Serach movies" (keydown.enter)="getMovies(searchText.value)"> -->
+
+        <!-- (keydown.enter)="getMovies($event) -->
+        <!-- save(event) {
+            console.log("You entered: ", event.target.value);
+          } -->
+
+        
+        <!-- 2da Estandar -->
+         <!-- <input type="text" #searchText name="#searchText" placeholder="Serach movies" >
+         <img (click)="getMovies(searchText.value)" src="../../../assets/search.svg" alt="search"> -->
+        
+         <!-- //3ra forma EVENT
+         <input type="text" (keyup)="getMovies($event)" name="#searchText" placeholder="Serach movies" >
+         <img  src="../../../assets/search.svg" alt="search">  -->
+
+         
+         <input type="text" #movieSearchInput name="#searchText" placeholder="Search movies..." >
+         <!-- <img  src="../../../assets/search.svg" alt="search">  -->
+         <span class="material-symbols-outlined">search</span>
+
+
+        
+    </div>
+
+    <!-- Metodo si pipe aync -->
+    <!-- <div class="container" *ngIf="movies.length > 0; else empty"> -->
+
+    <!-- Métod con Pipe Aync -->
+    <!-- <div class="container" *ngIf="(movies$ | async) as movies ; else empty"> -->
+    <div class="container" *ngIf="(movies$ | async) as movies">
+        <app-card-movie *ngFor="let movie of movies" [movieCard]="movie" ></app-card-movie>
+    </div>
+    
+    <div class="container" *ngIf="(movies$ | async) === undefined">
+        <div class="empty">
+            <h3>No found movies </h3>
+        </div>
+    </div>
+
+
+    
+
+<!--     
+    <ng-template #empty class="empty">
+        <h3>No found movies </h3>
+    </ng-template> -->
+
+</div>
